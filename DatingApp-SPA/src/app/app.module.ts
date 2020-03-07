@@ -8,16 +8,28 @@ import { ValueComponent } from "./value/value.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NavComponent } from "./nav/nav.component";
 import { AuthService } from "./_services/auth.service";
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
-  declarations: [AppComponent, ValueComponent, NavComponent],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    FormsModule
-  ],
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      ValueComponent,
+      NavComponent,
+      HomeComponent,
+      RegisterComponent
+   ],
+   imports: [
+      BrowserModule,
+      HttpClientModule,
+      BrowserAnimationsModule,
+      FormsModule
+   ],
+   providers: [
+      AuthService
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule {}
