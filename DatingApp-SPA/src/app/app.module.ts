@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 import { ValueComponent } from "./value/value.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NavComponent } from "./nav/nav.component";
+import { AuthService } from "./_services/auth.service";
 
 @NgModule({
   declarations: [AppComponent, ValueComponent, NavComponent],
@@ -16,7 +17,7 @@ import { NavComponent } from "./nav/nav.component";
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
