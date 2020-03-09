@@ -28,7 +28,12 @@ namespace DatingApp.API
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-      services.AddControllers();
+      // ignore self referecing error
+      services.AddControllers().AddNewtonsoftJson(opt =>
+            {
+              opt.SerializerSettings.ReferenceLoopHandling =
+                  Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
       services.AddCors();
       //Inject the auth repository
       services.AddScoped<IAuthRepository, AuthRepository>();
