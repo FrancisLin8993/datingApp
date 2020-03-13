@@ -88,5 +88,24 @@ export class PhotoEditorComponent implements OnInit {
       );
   }
 
+  deletePhoto(id: number) {
+    this.alertify.confirm("Are you sure to delete this photo?", () => {
+      this.userService
+        .deletePhoto(this.authService.decodedToken.nameid, id)
+        .subscribe(
+          () => {
+            this.photos.splice(
+              this.photos.findIndex(p => p.id === id),
+              1
+            );
+            this.alertify.success("Photo has deleted");
+          },
+          error => {
+            this.alertify.error("failed to delete photo");
+          }
+        );
+    });
+  }
+
   ngOnInit(): void {}
 }
