@@ -26,7 +26,8 @@ namespace DatingApp.API.Data
 
     public async Task<Photo> GetMainPhoto(int userId)
     {
-      return await _context.Photos.Where(u => u.Id == userId).FirstOrDefaultAsync(p => p.IsMain);
+      var photo = await _context.Photos.Where(u => u.UserId == userId).FirstOrDefaultAsync(p => p.IsMain);
+      return photo;
     }
 
     public async Task<Photo> GetPhoto(int id)
