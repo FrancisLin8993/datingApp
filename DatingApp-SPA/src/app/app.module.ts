@@ -26,6 +26,7 @@ import { UserService } from "./_services/user.service";
 
 import { ErrorInterceptorProvider } from "./_services/error.interceptor";
 import { MemberDetailResolver } from "./_resolvers/member-detail.resolver";
+import { TimeAgoExtendsPipe } from "./_pipes/timeago.pipe";
 
 import { appRoutes } from "./routes";
 import { JwtModule } from "@auth0/angular-jwt";
@@ -61,7 +62,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberCardComponent,
     MemberDetailComponent,
     MemberEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    TimeAgoExtendsPipe
   ],
   imports: [
     BrowserModule,
