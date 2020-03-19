@@ -6,12 +6,8 @@ import {
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {
-  BsDropdownModule,
-  TabsModule,
-  PaginationModule,
-  ButtonsModule
-} from "ngx-bootstrap";
+import { BsDropdownModule, TabsModule, PaginationModule } from "ngx-bootstrap";
+import { ButtonsModule } from "ngx-bootstrap/buttons";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import { RouterModule } from "@angular/router";
@@ -42,6 +38,7 @@ import { MemberEditResolver } from "./_resolvers/member-edit.resolver";
 import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guard";
 import { PhotoEditorComponent } from "./members/photo-editor/photo-editor.component";
 import { FileUploadModule } from "ng2-file-upload";
+import { ListsResolver } from "./_resolvers/lists.resolver";
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -100,6 +97,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberDetailResolver,
     MemberListResolver,
     MemberEditResolver,
+    ListsResolver,
     PreventUnsavedChanges,
     {
       provide: HAMMER_GESTURE_CONFIG,
