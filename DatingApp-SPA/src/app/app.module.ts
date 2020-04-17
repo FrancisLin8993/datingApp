@@ -39,6 +39,8 @@ import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guard";
 import { PhotoEditorComponent } from "./members/photo-editor/photo-editor.component";
 import { FileUploadModule } from "ng2-file-upload";
 import { ListsResolver } from "./_resolvers/lists.resolver";
+import { MessagesResolver } from "./_resolvers/messages.resolver";
+import { MemberMessagesComponent } from "./members/member-list/member-messages/member-messages.component";
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -65,6 +67,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberDetailComponent,
     MemberEditComponent,
     PhotoEditorComponent,
+    MemberMessagesComponent,
     TimeAgoExtendsPipe
   ],
   imports: [
@@ -98,6 +101,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberListResolver,
     MemberEditResolver,
     ListsResolver,
+    MessagesResolver,
     PreventUnsavedChanges,
     {
       provide: HAMMER_GESTURE_CONFIG,
