@@ -42,7 +42,7 @@ namespace DatingApp.API
       services.AddDbContext<DataContext>(x =>
       {
         x.UseLazyLoadingProxies();
-        x.UseMySql(Configuration.GetConnectionString("DefaultConnection"));
+        x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
       });
 
       ConfigureServices(services);
@@ -90,27 +90,28 @@ namespace DatingApp.API
         app.UseDeveloperExceptionPage();
       }
       else
-      //set up a global exception handler
+      // //set up a global exception handler
       {
-        app.UseExceptionHandler(builder =>
-        {
-          builder.Run(async context =>
-          {
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+        //   app.UseExceptionHandler(builder =>
+        //   {
+        //     builder.Run(async context =>
+        //     {
+        //       context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            var error = context.Features.Get<IExceptionHandlerFeature>();
-            if (error != null)
-            {
-              //Add headers to avoid misleading cors error displayed in clientside
-              context.Response.AddApplicationError(error.Error.Message);
-              await context.Response.WriteAsync(error.Error.Message);
-            }
-          });
-        });
+        //       var error = context.Features.Get<IExceptionHandlerFeature>();
+        //       if (error != null)
+        //       {
+        //         //Add headers to avoid misleading cors error displayed in clientside
+        //         context.Response.AddApplicationError(error.Error.Message);
+        //         await context.Response.WriteAsync(error.Error.Message);
+        //       }
+        //     });
+        //   });
+        app.UseHsts();
       }
 
-      //Temporarily turn off
-      //app.UseHttpsRedirection();
+      app.UseDeveloperExceptionPage();
+      app.UseHttpsRedirection();
 
       app.UseRouting();
 
